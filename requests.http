@@ -1,0 +1,72 @@
+@base = http://localhost:8088
+@tokenCliente = PEGA_EL_TOKEN_DEL_LOGIN_DEL_CLIENTE
+@tokenAdmin = PEGA_EL_TOKEN_DEL_LOGIN_DEL_ADMIN
+@productoId = PEGA_EL_ID_DE_UN_PRODUCTO
+@pedidoId = PEGA_EL_ID_DEL_PEDIDO
+
+### Registro publico: el rol siempre es CLIENTE
+POST {{base}}/api/v1/auth/register
+Content-Type: application/json
+
+{"nombre":"Ana","apellidos":"Prueba","correo":"ana@gmail.com","password":"Cliente123!"}
+
+### Login cliente
+POST {{base}}/api/v1/auth/login
+Content-Type: application/json
+
+{"correo":"ana@gmail.com","password":"Cliente123!"}
+
+### Login administrador (solo perfil demo)
+POST {{base}}/api/v1/auth/login
+Content-Type: application/json
+
+{"correo":"admin@losmaestros.cl","password":"DemoAdmin123!"}
+
+### JWT protege el perfil
+GET {{base}}/api/v1/auth/me
+Authorization: Bearer {{tokenCliente}}
+
+### Catalogo publico
+GET {{base}}/api/v1/productos
+
+### Buscar
+GET {{base}}/api/v1/productos?buscar=Martillo
+
+### Crear producto con administrador
+POST {{base}}/api/v1/productos
+Authorization: Bearer {{tokenAdmin}}
+Content-Type: application/json
+
+{"nombre":"Alicate","categoria":"Herramientas manuales","precio":6990,"stock":10,"imagen":"/img/productos/alicate.jpg","descripcion":"Alicate de prueba"}
+
+### Actualizacion parcial
+PATCH {{base}}/api/v1/productos/{{productoId}}
+Authorization: Bearer {{tokenAdmin}}
+Content-Type: application/json
+
+{"precio":7490}
+
+### Pedido: el servidor obtiene los precios y calcula el total
+POST {{base}}/api/v1/pedidos
+Authorization: Bearer {{tokenCliente}}
+Content-Type: application/json
+
+{"tipoEntrega":"RETIRO","items":[{"productoId":"{{productoId}}","cantidad":2}]}
+
+### Historial propio
+GET {{base}}/api/v1/pedidos
+Authorization: Bearer {{tokenCliente}}
+
+### Cambiar estado como personal
+PATCH {{base}}/api/v1/pedidos/{{pedidoId}}/estado
+Authorization: Bearer {{tokenAdmin}}
+Content-Type: application/json
+
+{"estado":"PREPARACION"}
+
+### Eliminar producto del catalogo
+DELETE {{base}}/api/v1/productos/{{productoId}}
+Authorization: Bearer {{tokenAdmin}}
+
+### Swagger JSON
+GET {{base}}/v3/api-docs

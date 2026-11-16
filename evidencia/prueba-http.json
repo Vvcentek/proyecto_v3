@@ -1,0 +1,182 @@
+{
+  "correcto": true,
+  "correoPrueba": "cliente.1794860195010@gmail.com",
+  "pedidoId": "2eba092d-d626-4dc2-8748-bfe82ce01d6b",
+  "comprobaciones": [
+    {
+      "nombre": "Servidor disponible",
+      "metodo": "GET",
+      "ruta": "/api/v1/salud",
+      "estado": 200,
+      "correcto": true
+    },
+    {
+      "nombre": "Swagger y JWT documentados",
+      "metodo": "GET",
+      "ruta": "/v3/api-docs",
+      "estado": 200,
+      "correcto": true
+    },
+    {
+      "nombre": "Swagger UI accesible",
+      "metodo": "GET",
+      "ruta": "/swagger-ui/index.html",
+      "estado": 200,
+      "correcto": true
+    },
+    {
+      "nombre": "Pedidos sin JWT rechazados",
+      "metodo": "GET",
+      "ruta": "/api/v1/pedidos",
+      "estado": 401,
+      "correcto": true
+    },
+    {
+      "nombre": "Registro de cliente",
+      "metodo": "POST",
+      "ruta": "/api/v1/auth/register",
+      "estado": 201,
+      "correcto": true
+    },
+    {
+      "nombre": "Correo duplicado rechazado",
+      "metodo": "POST",
+      "ruta": "/api/v1/auth/register",
+      "estado": 409,
+      "correcto": true
+    },
+    {
+      "nombre": "Credenciales incorrectas rechazadas",
+      "metodo": "POST",
+      "ruta": "/api/v1/auth/login",
+      "estado": 401,
+      "correcto": true
+    },
+    {
+      "nombre": "Login de cliente",
+      "metodo": "POST",
+      "ruta": "/api/v1/auth/login",
+      "estado": 200,
+      "correcto": true
+    },
+    {
+      "nombre": "JWT permite consultar perfil",
+      "metodo": "GET",
+      "ruta": "/api/v1/auth/me",
+      "estado": 200,
+      "correcto": true
+    },
+    {
+      "nombre": "JWT invalido rechazado",
+      "metodo": "GET",
+      "ruta": "/api/v1/auth/me",
+      "estado": 401,
+      "correcto": true
+    },
+    {
+      "nombre": "Login de administrador demo",
+      "metodo": "POST",
+      "ruta": "/api/v1/auth/login",
+      "estado": 200,
+      "correcto": true
+    },
+    {
+      "nombre": "Crear producto como administrador",
+      "metodo": "POST",
+      "ruta": "/api/v1/productos",
+      "estado": 201,
+      "correcto": true
+    },
+    {
+      "nombre": "Consultar producto",
+      "metodo": "GET",
+      "ruta": "/api/v1/productos/5a711aeb-7a0a-4cd9-b30a-bbd8c0b67af9",
+      "estado": 200,
+      "correcto": true
+    },
+    {
+      "nombre": "Cliente sin permiso de edicion",
+      "metodo": "PATCH",
+      "ruta": "/api/v1/productos/5a711aeb-7a0a-4cd9-b30a-bbd8c0b67af9",
+      "estado": 403,
+      "correcto": true
+    },
+    {
+      "nombre": "Actualizar precio sin perder stock",
+      "metodo": "PATCH",
+      "ruta": "/api/v1/productos/5a711aeb-7a0a-4cd9-b30a-bbd8c0b67af9",
+      "estado": 200,
+      "correcto": true
+    },
+    {
+      "nombre": "Crear pedido con total del servidor",
+      "metodo": "POST",
+      "ruta": "/api/v1/pedidos",
+      "estado": 201,
+      "correcto": true
+    },
+    {
+      "nombre": "Stock descontado",
+      "metodo": "GET",
+      "ruta": "/api/v1/productos/5a711aeb-7a0a-4cd9-b30a-bbd8c0b67af9",
+      "estado": 200,
+      "correcto": true
+    },
+    {
+      "nombre": "Pedido sin stock rechazado",
+      "metodo": "POST",
+      "ruta": "/api/v1/pedidos",
+      "estado": 409,
+      "correcto": true
+    },
+    {
+      "nombre": "Consultar pedido propio",
+      "metodo": "GET",
+      "ruta": "/api/v1/pedidos/2eba092d-d626-4dc2-8748-bfe82ce01d6b",
+      "estado": 200,
+      "correcto": true
+    },
+    {
+      "nombre": "Consultar historial",
+      "metodo": "GET",
+      "ruta": "/api/v1/pedidos",
+      "estado": 200,
+      "correcto": true
+    },
+    {
+      "nombre": "Preparar pedido",
+      "metodo": "PATCH",
+      "ruta": "/api/v1/pedidos/2eba092d-d626-4dc2-8748-bfe82ce01d6b/estado",
+      "estado": 200,
+      "correcto": true
+    },
+    {
+      "nombre": "Cancelar pedido",
+      "metodo": "PATCH",
+      "ruta": "/api/v1/pedidos/2eba092d-d626-4dc2-8748-bfe82ce01d6b/estado",
+      "estado": 200,
+      "correcto": true
+    },
+    {
+      "nombre": "Inventario repuesto al cancelar",
+      "metodo": "GET",
+      "ruta": "/api/v1/productos/5a711aeb-7a0a-4cd9-b30a-bbd8c0b67af9",
+      "estado": 200,
+      "correcto": true
+    },
+    {
+      "nombre": "Eliminar producto",
+      "metodo": "DELETE",
+      "ruta": "/api/v1/productos/5a711aeb-7a0a-4cd9-b30a-bbd8c0b67af9",
+      "estado": 204,
+      "correcto": true
+    },
+    {
+      "nombre": "Producto eliminado ya no es visible",
+      "metodo": "GET",
+      "ruta": "/api/v1/productos/5a711aeb-7a0a-4cd9-b30a-bbd8c0b67af9",
+      "estado": 404,
+      "correcto": true
+    }
+  ]
+}

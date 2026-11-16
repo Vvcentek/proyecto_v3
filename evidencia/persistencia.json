@@ -1,0 +1,19 @@
+{
+  "correcto": true,
+  "comprobaciones": [
+    {
+      "nombre": "Login del cliente despues de reiniciar",
+      "metodo": "POST",
+      "ruta": "/api/v1/auth/login",
+      "estado": 200,
+      "correcto": true
+    },
+    {
+      "nombre": "Pedido conservado despues de reiniciar",
+      "metodo": "GET",
+      "ruta": "/api/v1/pedidos/2eba092d-d626-4dc2-8748-bfe82ce01d6b",
+      "estado": 200,
+      "correcto": true
+    }
+  ]
+}
